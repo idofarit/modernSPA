@@ -5,23 +5,24 @@ import {
 } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import dayjs from "dayjs";
 
-import PosterFallback from "../../assets/no-poster.png";
-
-import "./style.scss";
 import ContentWrapper from "../contentWrapper/ContentWrapper";
 import Img from "../lazyLoadIamge/Img";
-import moment from "moment/moment";
+import PosterFallback from "../../assets/no-poster.png";
 import CircleRating from "../circleRating/CircleRating";
 import Genres from "../genres/Genres";
 
-const Carousel = ({ data, loading, endPoint }) => {
+import "./style.scss";
+
+const Carousel = ({ data, loading, endpoint, title }) => {
   const carouselContainer = useRef();
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
 
   const navigation = (dir) => {
     const container = carouselContainer.current;
+
     const scrollAmount =
       dir === "left"
         ? container.scrollLeft - (container.offsetWidth + 20)
@@ -48,6 +49,7 @@ const Carousel = ({ data, loading, endPoint }) => {
   return (
     <div className="carousel">
       <ContentWrapper>
+        {title && <div className="carouselTitle">{title}</div>}
         <BsFillArrowLeftCircleFill
           className="carouselLeftNav arrow"
           onClick={() => navigation("left")}
@@ -56,7 +58,6 @@ const Carousel = ({ data, loading, endPoint }) => {
           className="carouselRighttNav arrow"
           onClick={() => navigation("right")}
         />
-
         {!loading ? (
           <div className="carouselItems" ref={carouselContainer}>
             {data?.map((item) => {
@@ -65,10 +66,10 @@ const Carousel = ({ data, loading, endPoint }) => {
                 : PosterFallback;
               return (
                 <div
-                  className="carouselItem"
                   key={item.id}
+                  className="carouselItem"
                   onClick={() =>
-                    navigate(`/${item.media_type || endPoint}/${item.id}`)
+                    navigate(`/${item.media_type || endpoint}/${item.id}`)
                   }
                 >
                   <div className="posterBlock">
@@ -79,7 +80,9 @@ const Carousel = ({ data, loading, endPoint }) => {
                   <div className="textBlock">
                     <span className="title">{item.title || item.name}</span>
                     <span className="date">
-                      {moment(item.release_Date).format("MMM Do YYYY")}
+                      {dayjs(item.release_date || item.first_air_date).format(
+                        "MMM D, YYYY"
+                      )}
                     </span>
                   </div>
                 </div>
