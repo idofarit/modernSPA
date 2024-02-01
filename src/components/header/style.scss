@@ -30,7 +30,10 @@
   .logo {
     cursor: pointer;
     img {
-      height: 50px;
+      height: 40px;
+      @include md {
+        height: 50px;
+      }
     }
   }
   .menuItems {
