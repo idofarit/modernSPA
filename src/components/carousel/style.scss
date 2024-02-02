@@ -131,11 +131,12 @@
           position: relative;
           top: 30px;
           background: linear-gradient(
-            -225deg,
+            -228deg,
             #d4ffec 0%,
-            #57f2cc 48%,
-            #4596fb 100%
+            #57f2cc 8%,
+            #4596fb 80%
           );
+
           flex-shrink: 0;
           @include md {
             width: 50px;
