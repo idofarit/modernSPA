@@ -5,6 +5,7 @@ import useFetch from "../../../hooks/useFetch";
 import { useSelector } from "react-redux";
 import Img from "../../../components/lazyLoadIamge/Img";
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
+import Typewriter from "typewriter-effect";
 
 const HeroBanner = () => {
   const navigate = useNavigate();
@@ -13,6 +14,10 @@ const HeroBanner = () => {
   const { url } = useSelector((state) => state.home);
 
   const { data, loading } = useFetch("/movie/upcoming");
+
+  const media = {
+    topic: ["movies", "tv-shows", "hollywood content", "bollywood content"],
+  };
 
   useEffect(() => {
     const bg =
@@ -41,7 +46,16 @@ const HeroBanner = () => {
         <div className="heroBannerContent">
           <span className="title">Welcome to Movie World</span>
           <span className="subTitle">
-            Millions of People, movies TV shows to discover
+            get details of your preferred
+            <span className="typewriter">
+              <Typewriter
+                options={{
+                  strings: media.topic,
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
+            </span>
           </span>
 
           <div className="serachInput">

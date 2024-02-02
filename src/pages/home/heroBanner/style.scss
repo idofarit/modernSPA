@@ -7,9 +7,11 @@
   display: flex;
   align-items: center;
   position: relative;
+
   @include md {
     height: 700px;
   }
+
   .backdrop-img {
     width: 100%;
     height: 100%;
@@ -56,11 +58,17 @@
       }
     }
     .subTitle {
-      font-size: 12px;
-      font-weight: 500;
+      font-size: 20px;
+      font-weight: 900;
       margin-bottom: 40px;
+
       @include md {
         font-size: 20px;
+      }
+      .typewriter {
+        line-height: 1.8rem;
+        text-transform: capitalize;
+        color: rgba(248, 251, 49, 0.867);
       }
     }
     .serachInput {
