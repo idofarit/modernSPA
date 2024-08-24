@@ -43,8 +43,8 @@ const HeroBanner = () => {
       <div className="opacity-layer"></div>
 
       <ContentWrapper>
-        <div className="heroBannerContent">
-          <span className="title">Welcome to Movie World</span>
+        <div className="heroBannerContent ">
+          <span className="title bungee-tint-regula">Movie-N-corn</span>
           <span className="subTitle">
             get details of your preferred
             <span className="typewriter">
@@ -58,7 +58,7 @@ const HeroBanner = () => {
             </span>
           </span>
 
-          <div className="serachInput">
+          <div className="searchInput">
             <input
               type="text"
               onKeyUp={searchQueryHandler}
