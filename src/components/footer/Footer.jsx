@@ -9,6 +9,7 @@ import {
 import ContentWrapper from "../contentWrapper/ContentWrapper";
 
 import "./style.scss";
+import SocialMediaIcons from "./SocialMediaIcons";
 
 const Footer = () => {
   return (
@@ -29,20 +30,9 @@ const Footer = () => {
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur.
         </div>
-        <div className="socialIcons">
-          <span className="icon">
-            <FaFacebookF />
-          </span>
-          <span className="icon">
-            <FaInstagram />
-          </span>
-          <span className="icon">
-            <FaTwitter />
-          </span>
-          <span className="icon">
-            <FaLinkedin />
-          </span>
-        </div>
+        {/* social media icons */}
+        <SocialMediaIcons />
+        {/* social media icons */}
       </ContentWrapper>
     </footer>
   );
